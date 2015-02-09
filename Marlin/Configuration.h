@@ -408,10 +408,10 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
   #ifdef AUTO_BED_LEVELING_GRID
 
     // set the rectangle in which to probe
-    #define LEFT_PROBE_BED_POSITION 0
-    #define RIGHT_PROBE_BED_POSITION 100
+    #define LEFT_PROBE_BED_POSITION 27
+    #define RIGHT_PROBE_BED_POSITION 117
     #define BACK_PROBE_BED_POSITION 130
-    #define FRONT_PROBE_BED_POSITION 50
+    #define FRONT_PROBE_BED_POSITION 20
 
      // set the number of grid points per dimension
      // I wouldn't see a reason to go above 3 (=9 probing points on the bed)
@@ -422,20 +422,27 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
     // with no grid, just probe 3 arbitrary points.  A simple cross-product
     // is used to esimate the plane of the print bed
 
-      #define ABL_PROBE_PT_1_X 15
-      #define ABL_PROBE_PT_1_Y 180
-      #define ABL_PROBE_PT_2_X 15
-      #define ABL_PROBE_PT_2_Y 20
-      #define ABL_PROBE_PT_3_X 170
+//      #define ABL_PROBE_PT_1_X 15
+//      #define ABL_PROBE_PT_1_Y 180
+//      #define ABL_PROBE_PT_2_X 15
+//      #define ABL_PROBE_PT_2_Y 20
+//      #define ABL_PROBE_PT_3_X 170
+//      #define ABL_PROBE_PT_3_Y 20
+      #define ABL_PROBE_PT_1_X 27
+      #define ABL_PROBE_PT_1_Y 20
+      #define ABL_PROBE_PT_2_X 27
+      #define ABL_PROBE_PT_2_Y 140
+      #define ABL_PROBE_PT_3_X 117
       #define ABL_PROBE_PT_3_Y 20
+
 
   #endif // AUTO_BED_LEVELING_GRID
 
 
   // these are the offsets to the probe relative to the extruder tip (Hotend - Probe)
   // X and Y offsets must be integers
-  #define X_PROBE_OFFSET_FROM_EXTRUDER 27.0
-  #define Y_PROBE_OFFSET_FROM_EXTRUDER -6.0
+  #define X_PROBE_OFFSET_FROM_EXTRUDER 27
+  #define Y_PROBE_OFFSET_FROM_EXTRUDER -6
   #define Z_PROBE_OFFSET_FROM_EXTRUDER -4.0
 
   #define Z_RAISE_BEFORE_HOMING 4       // (in mm) Raise Z before homing (G28) for Probe Clearance.
@@ -473,28 +480,28 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
   #endif
 
-//  #ifdef AUTO_BED_LEVELING_GRID	// Check if Probe_Offset * Grid Points is greater than Probing Range
-//    #if X_PROBE_OFFSET_FROM_EXTRUDER < 0
-//      #if (-(X_PROBE_OFFSET_FROM_EXTRUDER * (AUTO_BED_LEVELING_GRID_POINTS-1)) >= (RIGHT_PROBE_BED_POSITION - LEFT_PROBE_BED_POSITION))
-//	     #error "The X axis probing range is not enough to fit all the points defined in AUTO_BED_LEVELING_GRID_POINTS"
-//	  #endif
-//	#else
-//      #if ((X_PROBE_OFFSET_FROM_EXTRUDER * (AUTO_BED_LEVELING_GRID_POINTS-1)) >= (RIGHT_PROBE_BED_POSITION - LEFT_PROBE_BED_POSITION))
-//	     #error "The X axis probing range is not enough to fit all the points defined in AUTO_BED_LEVELING_GRID_POINTS"
-//	  #endif
-//	#endif
-//    #if Y_PROBE_OFFSET_FROM_EXTRUDER < 0
-//      #if (-(Y_PROBE_OFFSET_FROM_EXTRUDER * (AUTO_BED_LEVELING_GRID_POINTS-1)) >= (BACK_PROBE_BED_POSITION - FRONT_PROBE_BED_POSITION))
-//	     #error "The Y axis probing range is not enough to fit all the points defined in AUTO_BED_LEVELING_GRID_POINTS"
-//	  #endif
-//	#else
-//      #if ((Y_PROBE_OFFSET_FROM_EXTRUDER * (AUTO_BED_LEVELING_GRID_POINTS-1)) >= (BACK_PROBE_BED_POSITION - FRONT_PROBE_BED_POSITION))
-//	     #error "The Y axis probing range is not enough to fit all the points defined in AUTO_BED_LEVELING_GRID_POINTS"
-//	  #endif
-//	#endif
+  #ifdef AUTO_BED_LEVELING_GRID	// Check if Probe_Offset * Grid Points is greater than Probing Range
+    #if X_PROBE_OFFSET_FROM_EXTRUDER < 0
+      #if (-(X_PROBE_OFFSET_FROM_EXTRUDER * (AUTO_BED_LEVELING_GRID_POINTS-1)) >= (RIGHT_PROBE_BED_POSITION - LEFT_PROBE_BED_POSITION))
+	     #error "The X axis probing range is not enough to fit all the points defined in AUTO_BED_LEVELING_GRID_POINTS"
+	  #endif
+	#else
+      #if ((X_PROBE_OFFSET_FROM_EXTRUDER * (AUTO_BED_LEVELING_GRID_POINTS-1)) >= (RIGHT_PROBE_BED_POSITION - LEFT_PROBE_BED_POSITION))
+	     #error "The X axis probing range is not enough to fit all the points defined in AUTO_BED_LEVELING_GRID_POINTS"
+	  #endif
+	#endif
+    #if Y_PROBE_OFFSET_FROM_EXTRUDER < 0
+      #if (-(Y_PROBE_OFFSET_FROM_EXTRUDER * (AUTO_BED_LEVELING_GRID_POINTS-1)) >= (BACK_PROBE_BED_POSITION - FRONT_PROBE_BED_POSITION))
+	     #error "The Y axis probing range is not enough to fit all the points defined in AUTO_BED_LEVELING_GRID_POINTS"
+	  #endif
+	#else
+      #if ((Y_PROBE_OFFSET_FROM_EXTRUDER * (AUTO_BED_LEVELING_GRID_POINTS-1)) >= (BACK_PROBE_BED_POSITION - FRONT_PROBE_BED_POSITION))
+	     #error "The Y axis probing range is not enough to fit all the points defined in AUTO_BED_LEVELING_GRID_POINTS"
+	  #endif
+	#endif
 
 	
-//  #endif
+  #endif
   
 #endif // ENABLE_AUTO_BED_LEVELING
 
