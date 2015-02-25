@@ -8,7 +8,7 @@
 //===========================================================================
 /*
 Here are some standard links for getting your machine calibrated:
- * http://reprap.org/wiki/Calibration 
+ * http://reprap.org/wiki/Calibration
  * http://youtu.be/wAL9d7FgInk
  * http://calculator.josefprusa.cz
  * http://reprap.org/wiki/Triffid_Hunter%27s_Calibration_Guide
@@ -105,7 +105,7 @@ Here are some standard links for getting your machine calibrated:
 // 10 is 100k RS thermistor 198-961 (4.7k pullup)
 // 11 is 100k beta 3950 1% thermistor (4.7k pullup)
 // 12 is 100k 0603 SMD Vishay NTCS0603E3104FXT (4.7k pullup) (calibrated for Makibox hot bed)
-// 13 is 100k Hisens 3950  1% up to 300°C for hotend "Simple ONE " & "Hotend "All In ONE" 
+// 13 is 100k Hisens 3950  1% up to 300°C for hotend "Simple ONE " & "Hotend "All In ONE"
 // 20 is the PT100 circuit found in the Ultimainboard V2.x
 // 60 is 100k Maker's Tool Works Kapton Bed Thermistor beta=3950
 //
@@ -265,15 +265,15 @@ The issue: If a thermistor come off, it will read a lower temperature than actua
 The system will turn the heater on forever, burning up the filament and anything
 else around.
 
-After the temperature reaches the target for the first time, this feature will 
-start measuring for how long the current temperature stays below the target 
+After the temperature reaches the target for the first time, this feature will
+start measuring for how long the current temperature stays below the target
 minus _HYSTERESIS (set_temperature - THERMAL_RUNAWAY_PROTECTION_HYSTERESIS).
 
 If it stays longer than _PERIOD, it means the thermistor temperature
 cannot catch up with the target, so something *may be* wrong. Then, to be on the
 safe side, the system will he halt.
 
-Bear in mind the count down will just start AFTER the first time the 
+Bear in mind the count down will just start AFTER the first time the
 thermistor temperature is over the target, so you will have no problem if
 your extruder heater takes 2 minutes to hit the target on heating.
 
@@ -400,7 +400,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 //    Probe 3 arbitrary points on the bed (that aren't colinear)
 //    You must specify the X & Y coordinates of all 3 points
 
-  #define AUTO_BED_LEVELING_GRID
+//  #define AUTO_BED_LEVELING_GRID
   // with AUTO_BED_LEVELING_GRID, the bed is sampled in a
   // AUTO_BED_LEVELING_GRID_POINTSxAUTO_BED_LEVELING_GRID_POINTS grid
   // and least squares solution is calculated
@@ -429,11 +429,11 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 //      #define ABL_PROBE_PT_3_X 170
 //      #define ABL_PROBE_PT_3_Y 20
       #define ABL_PROBE_PT_1_X 27
-      #define ABL_PROBE_PT_1_Y 20
-      #define ABL_PROBE_PT_2_X 27
-      #define ABL_PROBE_PT_2_Y 140
-      #define ABL_PROBE_PT_3_X 117
-      #define ABL_PROBE_PT_3_Y 20
+      #define ABL_PROBE_PT_1_Y 75
+      #define ABL_PROBE_PT_2_X 60
+      #define ABL_PROBE_PT_2_Y 35
+      #define ABL_PROBE_PT_3_X 110
+      #define ABL_PROBE_PT_3_Y 130
 
 
   #endif // AUTO_BED_LEVELING_GRID
@@ -442,8 +442,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
   // these are the offsets to the probe relative to the extruder tip (Hotend - Probe)
   // X and Y offsets must be integers
   #define X_PROBE_OFFSET_FROM_EXTRUDER 27
-  #define Y_PROBE_OFFSET_FROM_EXTRUDER -6
-  #define Z_PROBE_OFFSET_FROM_EXTRUDER -4.0
+  #define Y_PROBE_OFFSET_FROM_EXTRUDER -7
+  #define Z_PROBE_OFFSET_FROM_EXTRUDER -4.5
 
   #define Z_RAISE_BEFORE_HOMING 4       // (in mm) Raise Z before homing (G28) for Probe Clearance.
                                         // Be sure you have this distance over your Z_MAX_POS in case
@@ -500,9 +500,9 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 	  #endif
 	#endif
 
-	
+
   #endif
-  
+
 #endif // ENABLE_AUTO_BED_LEVELING
 
 
@@ -523,8 +523,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 // default settings
 //atom settings
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {80, 80, 4000, 91.6019707} 
-//#define DEFAULT_AXIS_STEPS_PER_UNIT   {80, 80, 400, 91.6019707} 
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {80, 80, 4000, 91.6019707}
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   {80, 80, 400, 91.6019707}
 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {78.7402,78.7402,200.0*8/3,760*1.1}  // default steps per unit for Ultimaker
 #define DEFAULT_MAX_FEEDRATE          {500, 500, 5, 25}    // (mm/sec)
@@ -553,8 +553,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #define CUSTOM_M_CODES
 #ifdef CUSTOM_M_CODES
   #define CUSTOM_M_CODE_SET_Z_PROBE_OFFSET 851
-  #define Z_PROBE_OFFSET_RANGE_MIN -15
-  #define Z_PROBE_OFFSET_RANGE_MAX -5
+  #define Z_PROBE_OFFSET_RANGE_MIN -10
+  #define Z_PROBE_OFFSET_RANGE_MAX -1
 #endif
 
 
@@ -714,7 +714,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // Shift register panels
 // ---------------------
 // 2 wire Non-latching LCD SR from:
-// https://bitbucket.org/fmalpartida/new-liquidcrystal/wiki/schematics#!shiftregister-connection 
+// https://bitbucket.org/fmalpartida/new-liquidcrystal/wiki/schematics#!shiftregister-connection
 
 //#define SAV_3DLCD
 #ifdef SAV_3DLCD
@@ -812,9 +812,9 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
  * Support for a filament diameter sensor
  * Also allows adjustment of diameter at print time (vs  at slicing)
  * Single extruder only at this point (extruder 0)
- * 
+ *
  * Motherboards
- * 34 - RAMPS1.4 - uses Analog input 5 on the AUX2 connector 
+ * 34 - RAMPS1.4 - uses Analog input 5 on the AUX2 connector
  * 81 - Printrboard - Uses Analog input 2 on the Exp1 connector (version B,C,D,E)
  * 301 - Rambo  - uses Analog input 3
  * Note may require analog pins to be defined for different motherboards
@@ -831,7 +831,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #define MAX_MEASUREMENT_DELAY			20  //delay buffer size in bytes (1 byte = 1cm)- limits maximum measurement delay allowable (must be larger than MEASUREMENT_DELAY_CM  and lower number saves RAM)
 
 //defines used in the code
-#define DEFAULT_MEASURED_FILAMENT_DIA  DEFAULT_NOMINAL_FILAMENT_DIA  //set measured to nominal initially 
+#define DEFAULT_MEASURED_FILAMENT_DIA  DEFAULT_NOMINAL_FILAMENT_DIA  //set measured to nominal initially
 
 //When using an LCD, uncomment the line below to display the Filament sensor data on the last line instead of status.  Status will appear for 5 sec.
 //#define FILAMENT_LCD_DISPLAY
